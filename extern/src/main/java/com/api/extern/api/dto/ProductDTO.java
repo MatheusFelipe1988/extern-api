@@ -1,5 +1,6 @@
 package com.api.extern.api.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @Builder
 public class ProductDTO{
         @JsonProperty(value = "id")
+        @JsonIgnore
         private Long id;
 
         @JsonProperty(value = "entity_id")

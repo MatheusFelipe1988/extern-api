@@ -28,7 +28,7 @@ public class FakeApiService {
                 throw new RuntimeException(format("produto ja cadastrado no banco de dados", produto.getTittle()));
             }
             );
-            return produtoConverter.toListDto(productService.getAllProducts());
+            return productService.getAllProducts();
         }catch (Exception e){
             throw new RuntimeException("Erro ao buscar nomes no banco de dados");
         }

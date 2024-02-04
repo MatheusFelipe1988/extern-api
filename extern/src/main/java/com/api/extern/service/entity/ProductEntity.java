@@ -41,4 +41,7 @@ public class ProductEntity {
    @Column(name = "data_inclusao")
     private LocalDateTime data_inclusao;
 
+   @Column(name = "data_update")
+    private LocalDateTime data_update;
+
 }

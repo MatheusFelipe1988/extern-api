@@ -22,6 +22,23 @@ public class ProdutoConverter {
                 .data_inclusao(LocalDateTime.now())
                 .build();
     }
+
+    public ProductEntity toEntityDto (ProductEntity productEntity, String id, ProductDTO productDTO){
+        return ProductEntity.builder()
+                .id(id)
+                .tittle(productDTO.getTittle() != null ? productDTO.getTittle()
+                        : productEntity.getTittle())
+                .category(productDTO.getCategory() != null ? productDTO.getCategory()
+                        : productEntity.getCategory())
+                .description(productDTO.getDescription() != null ? productDTO.getDescription()
+                        : productEntity.getDescription())
+                .price(productDTO.getPrice() != null ? productDTO.getPrice() : productEntity.getPrice())
+                .image(productDTO.getImage() != null ? productDTO.getImage() : productEntity.getImage())
+                .data_inclusao(productEntity.getData_inclusao())
+                .data_update(LocalDateTime.now())
+                .build();
+    }
+
     public ProductDTO toDto(ProductEntity productEntity){
         return ProductDTO.builder()
                 .entityId(productEntity.getId())

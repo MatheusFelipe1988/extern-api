@@ -3,11 +3,13 @@ package com.api.extern.business.configuration;
 import com.api.extern.api.dto.ProductDTO;
 import com.api.extern.business.converter.ProdutoConverter;
 import com.api.extern.service.client.FakeApiClient;
+import com.api.extern.service.exception.BusinessException;
+import com.api.extern.service.exception.ConflictException;
+import com.api.extern.service.exception.UnprocessableEntityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import static java.lang.String.format;
 
 
 @Service
@@ -24,13 +26,16 @@ public class FakeApiService {
                 Boolean retorno = productService.existPorTitulo(produto.getTittle());
                 if (retorno.equals(false)){
                     productService.salvarProdutos(produtoConverter.toEntity(produto));
+                }else {
+                    throw new ConflictException("this product exist in database" + produto.getTittle());
                 }
-                throw new RuntimeException(format("produto ja cadastrado no banco de dados", produto.getTittle()));
             }
             );
             return productService.getAllProducts();
+        }catch (ConflictException e){
+            throw new ConflictException(e.getMessage());
         }catch (Exception e){
-            throw new RuntimeException("Erro ao buscar nomes no banco de dados");
+            throw new BusinessException("Erro ao buscar nomes no banco de dados");
         }
     }
 }

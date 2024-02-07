@@ -3,7 +3,8 @@ API externa onde usa o feign client pra consumir de forma eficiente uma api para
 &nbsp;
 
 ### Recursos Adicionais
-Tratamento de exceções implementado para personalizar de forma eficiente erros na hora de injetar,alterar,buscar e deletar dados
+Tratamento de exceções implementado para personalizar de forma eficiente erros na hora de injetar,alterar,buscar e deletar dados. Implementado testes unitários para
+verificar se todo o codigo esta funcionando como esperado.
 
 ## Stacks
 - Java
@@ -11,3 +12,5 @@ Tratamento de exceções implementado para personalizar de forma eficiente erros
 - MySQL
 - Swagger
 - RabbitMQ
+- Junit
+- Mockito

@@ -12,7 +12,6 @@ public class FakeApiProducer {
     public FakeApiProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
-
     @Value(value = "${broker.queue.fake-api.producer}")
     private String routingKey;
 

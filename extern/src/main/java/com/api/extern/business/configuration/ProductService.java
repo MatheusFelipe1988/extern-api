@@ -2,6 +2,7 @@ package com.api.extern.business.configuration;
 
 import com.api.extern.api.dto.ProductDTO;
 import com.api.extern.business.converter.ProdutoConverter;
+import com.api.extern.message.producer.FakeApiProducer;
 import com.api.extern.service.entity.ProductEntity;
 import com.api.extern.service.exception.BusinessException;
 import com.api.extern.service.exception.ConflictException;
@@ -22,6 +23,8 @@ public class ProductService {
     private final ProductRepository repository;
 
     private final ProdutoConverter converter;
+
+    private final FakeApiProducer producer;
 
     public ProductEntity salvarProdutos(ProductEntity entity){
         try {
@@ -102,5 +105,9 @@ public class ProductService {
         }catch (Exception e){
             throw new BusinessException("error update products", e);
         }
+    }
+
+    public void sendMessage(ProductEntity productEntity){
+        producer.sendMessage(productEntity);
     }
 }

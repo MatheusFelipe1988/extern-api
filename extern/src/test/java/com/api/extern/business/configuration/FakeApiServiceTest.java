@@ -13,6 +13,12 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 public class FakeApiServiceTest {
     @InjectMocks
@@ -34,6 +40,8 @@ public class FakeApiServiceTest {
                 .category("camisa").description("camisa season 24 da red bull racing")
                 .price(new BigDecimal(259.99)).build();
         productDTOList.add(productDTO);
+
+        when(fakeApiClient.getListProducts()).thenReturn(productDTOList);
 
     }
 }

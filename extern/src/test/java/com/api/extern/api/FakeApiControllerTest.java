@@ -50,7 +50,7 @@ public class FakeApiControllerTest {
     void setup() throws JsonProcessingException{
 
         mockMvc = MockMvcBuilders.standaloneSetup(controller).alwaysDo(print()).build();
-        url = "/produtos";
+        url = "/produto";
         productDTO = ProductDTO.builder().tittle("Camisa RB").category("Camisa Oficial")
                 .description("Lançamento da Red Bull Racing").price(new BigDecimal("259.99")).build();
         json = objectMapper.writeValueAsString(productDTO);
@@ -118,7 +118,7 @@ public class FakeApiControllerTest {
 
     @Test
     void hutsDeleteProductDTO() throws Exception{
-        String tittle = "Camisa Red Bull";
+        String tittle = "Camisa RB";
 
         doNothing().when(productService).deleteProduct(tittle);
 

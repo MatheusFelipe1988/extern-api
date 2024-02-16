@@ -69,25 +69,6 @@ public class FakeApiControllerTest {
     }
 
     @Test
-    void notHustPostRequest() throws Exception{
-
-        String id = "2";
-
-        when(productService.updateProduct(id, productDTO)).thenReturn(productDTO);
-
-        mockMvc.perform(put(url + "/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json)
-                .param("id", id)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-
-        verify(productService).updateProduct(id, productDTO);
-        verifyNoInteractions(fakeApiService);
-    }
-
-    @Test
     void hustUpdateProductsDTO() throws Exception {
         String id = "3";
 

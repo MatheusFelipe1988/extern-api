@@ -48,7 +48,6 @@ public class FakeApiServiceTest {
         when(fakeApiClient.getListProducts()).thenReturn(productDTOList);
         when(productService.existPorTitulo(productDTO.getTittle())).thenReturn(false);
         when(produtoConverter.toEntity(productDTO)).thenReturn(productEntity);
-        when();
 
 
     }

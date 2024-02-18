@@ -57,6 +57,20 @@ public class FakeApiControllerTest {
     }
 
     @Test
+    void hustGetProductsFakeApi() throws Exception {
+
+        when(fakeApiService.getProducts()).thenReturn(Collections.singletonList(productDTO));
+
+        mockMvc.perform(post(url + "/api")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
+        verify(fakeApiService).getProducts();
+        verifyNoMoreInteractions(fakeApiService);
+    }
+
+    @Test
     void hustSaveProductsDTO() throws Exception{
         when(fakeApiService.getProducts()).thenReturn(Collections.singletonList(productDTO));
 
@@ -69,8 +83,19 @@ public class FakeApiControllerTest {
     }
 
     @Test
-    void hustUpdateProductsDTO() throws Exception {
-        String id = "3";
+    void notHustPostRequestCaseisNull() throws Exception {
+        mockMvc.perform(post(url + "/")
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+
+        verifyNoInteractions(productService);
+    }
+
+    @Test
+    void hustUpdateProductDTO() throws Exception {
+
+        String id = "12345";
 
         when(productService.updateProduct(id, productDTO)).thenReturn(productDTO);
 
@@ -79,7 +104,7 @@ public class FakeApiControllerTest {
                 .content(json)
                 .param("id", id)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                        .andExpect(status().isOk());
 
         verify(productService).updateProduct(id, productDTO);
         verifyNoMoreInteractions(productService);
@@ -92,43 +117,43 @@ public class FakeApiControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isBadRequest());
 
         verifyNoInteractions(productService);
     }
 
     @Test
-    void hutsDeleteProductDTO() throws Exception{
+    void hutsDeleteProductDTO() throws Exception {
+
         String tittle = "Camisa RB";
 
         doNothing().when(productService).deleteProduct(tittle);
 
-        mockMvc.perform(put(url + "/")
+        mockMvc.perform(delete(url + "/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .param("tittle", tittle)
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isAccepted());
 
         verify(productService).deleteProduct(tittle);
         verifyNoMoreInteractions(productService);
     }
 
     @Test
-    void notHustPostRequestDelete() throws Exception{
+    void notHustPostRequestDeleteisNull() throws Exception{
 
-        mockMvc.perform(put(url + "/")
+        mockMvc.perform(delete(url + "/")
                 .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-        )
-                .andExpect(status().isOk());
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
 
         verifyNoInteractions(productService);
     }
 
     @Test
-    void hustGetProductDTO() throws Exception{
+    void hustGetProductDTOByName() throws Exception{
 
-        String tittle = "Camisa Ferrari";
+        String tittle = "Camisa RB";
 
         when(productService.getProductByTittle(tittle)).thenReturn(productDTO);
 

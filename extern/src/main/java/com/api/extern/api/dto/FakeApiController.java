@@ -41,13 +41,14 @@ public class FakeApiController {
         return ResponseEntity.ok(productService.salvarProdutoDTO(productDTO));
     }
 
-    @Operation(summary = "Update de novos produtos", method = "UPDATE")
+    @Operation(summary = "Update de novos produtos", method = "PUT")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "atualizando produtos for OK"),
             @ApiResponse(responseCode = "500", description = "quando der erro no update")
     })
     @PutMapping("/")
     public ResponseEntity<ProductDTO> updateProduto(@RequestParam ("id") String id, @RequestBody ProductDTO productDTO){
+
         return ResponseEntity.ok(productService.updateProduct(id, productDTO));
     }
 

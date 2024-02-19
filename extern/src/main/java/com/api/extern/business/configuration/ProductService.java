@@ -26,11 +26,15 @@ public class ProductService {
 
     private final FakeApiProducer producer;
 
+    public void sendMessage(ProductEntity productEntity){
+        producer.sendMessage(productEntity);
+    }
+
     public ProductEntity salvarProdutos(ProductEntity entity){
         try {
             return repository.save(entity);
         }catch (Exception e){
-            throw new BusinessException("error save to products" + e);
+            throw new BusinessException("error save to products");
         }
     }
 
@@ -98,16 +102,12 @@ public class ProductService {
         try {
             ProductEntity entity = repository.findById(id).orElseThrow(() ->
                     new UnprocessableEntityException("error product not found in the database"));
-            salvarProdutos(converter.toEntityDto(entity, id, productDTO));
+            salvarProdutos(converter.toEntityUpdate(entity, productDTO, id));
             return converter.toDto(repository.findByTittle(entity.getTittle()));
         }catch (UnprocessableEntityException e){
             throw new UnsupportedOperationException(e.getMessage());
         }catch (Exception e){
             throw new BusinessException("error update products", e);
         }
-    }
-
-    public void sendMessage(ProductEntity productEntity){
-        producer.sendMessage(productEntity);
     }
 }

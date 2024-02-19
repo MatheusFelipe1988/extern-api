@@ -93,9 +93,9 @@ public class FakeApiControllerTest {
     }
 
     @Test
-    void hustUpdateProductDTO() throws Exception {
+    void hustUpdateProductDTOis() throws Exception {
 
-        String id = "12345";
+        String id = "1245";
 
         when(productService.updateProduct(id, productDTO)).thenReturn(productDTO);
 
@@ -104,7 +104,7 @@ public class FakeApiControllerTest {
                 .content(json)
                 .param("id", id)
                 .accept(MediaType.APPLICATION_JSON))
-                        .andExpect(status().isOk());
+                .andExpect(status().isOk());
 
         verify(productService).updateProduct(id, productDTO);
         verifyNoMoreInteractions(productService);

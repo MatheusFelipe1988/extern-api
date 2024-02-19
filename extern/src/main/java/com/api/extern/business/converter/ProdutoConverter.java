@@ -23,7 +23,7 @@ public class ProdutoConverter {
                 .build();
     }
 
-    public ProductEntity toEntityDto (ProductEntity productEntity, String id, ProductDTO productDTO){
+    public ProductEntity toEntityUpdate (ProductEntity productEntity, ProductDTO productDTO, String id){
         return ProductEntity.builder()
                 .id(id)
                 .tittle(productDTO.getTittle() != null ? productDTO.getTittle()

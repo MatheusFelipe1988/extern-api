@@ -1,5 +1,5 @@
 # extern-api
-API externa onde usa o feign client pra consumir de forma eficiente uma api paralela.
+API externa onde usa o feign client pra consumir de forma eficiente uma api de forma paralela.
 &nbsp;
 
 ### Recursos Adicionais

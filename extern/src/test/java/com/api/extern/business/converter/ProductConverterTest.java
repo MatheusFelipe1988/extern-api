@@ -19,7 +19,7 @@ public class ProductConverterTest {
     ProdutoConverter converter;
 
     @Test
-    void hustCoverterProductEntity(){
+    void hustCoverterProductEntityi(){
         ProductDTO productDTO = ProductDTO.builder().tittle("Camisa RB").category("Camisa")
                 .description("Lançamento season 2024").price(new BigDecimal("329.99")).build();
 
@@ -33,8 +33,17 @@ public class ProductConverterTest {
         assertEquals(productEntity.getDescription(), product.getDescription());
         assertEquals(productEntity.getImage(), product.getImage());
 
-        assertNotNull(productEntity.getId());
-        assertNotNull(productEntity.getData_inclusao());
+        assertNotNull(product.getId());
+        assertNotNull(product.getData_inclusao());
+    }
+
+    @Test
+    void hustConverttoProductDTO(){
+        ProductDTO productDTO = ProductDTO.builder().description("Nova camisa para a season 2024")
+                .price(new BigDecimal(239.90)).build();
+        ProductEntity productEntityEspe = ProductEntity.builder().id("1245").tittle("Camisa RB").category("Roupas")
+                .description("Para a season 2024").price(new BigDecimal(250.00)).build();
+        String id = "1234";
     }
 
 }

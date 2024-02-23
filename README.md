@@ -3,8 +3,7 @@ API externa onde usa o feign client pra consumir de forma eficiente uma api de f
 &nbsp;
 
 ### Recursos Adicionais
-Tratamento de exceções implementado para personalizar de forma eficiente erros na hora de injetar,alterar,buscar e deletar dados. Implementado testes unitários para
-verificar se todo o codigo esta funcionando como esperado.
+Tratamento de exceções implementado para personalizar de forma eficiente erros na hora de injetar,alterar,buscar e deletar dados. Implementado testes unitários com mock e junit para verificar se todo o codigo construído esta funcionando como esperado.
 
 ## Stacks
 - Java

@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -66,6 +68,20 @@ public class ProductConverterTest {
 
     @Test
     void hustConverterToList(){
+
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        List<ProductEntity> productEntityList = new ArrayList<>();
+        ProductDTO productDTO = ProductDTO.builder().entityId("12345").tittle("Camisa Ferrari")
+                .category("Camisa").description("camisa para season 2024").price(new BigDecimal(120.00)).build();
+        productDTOList.add(productDTO);
+
+        ProductEntity productEntity = ProductEntity.builder().id("12345").tittle("Camisa Ferrari").category("Camisa")
+                .description("camisa para season 2024").price(new BigDecimal(120.00)).build();
+        productEntityList.add(productEntity);
+
+        List<ProductDTO> productDTOS = converter.toListDto(productEntityList);
+
+        assertEquals(productDTOList, productDTOS);
 
     }
 }

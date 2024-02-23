@@ -20,6 +20,7 @@ public class ProductConverterTest {
 
     @Test
     void hustCoverterProductEntityi(){
+
         ProductDTO productDTO = ProductDTO.builder().tittle("Camisa RB").category("Camisa")
                 .description("Lançamento season 2024").price(new BigDecimal("329.99")).build();
 
@@ -39,11 +40,33 @@ public class ProductConverterTest {
 
     @Test
     void hustConverttoProductDTO(){
-        ProductDTO productDTO = ProductDTO.builder().description("Nova camisa para a season 2024")
-                .price(new BigDecimal(239.90)).build();
-        ProductEntity productEntityEspe = ProductEntity.builder().id("1245").tittle("Camisa RB").category("Roupas")
+
+        ProductDTO productDTO = ProductDTO.builder().description("Para a season 2024")
+                .price(new BigDecimal(250.00)).build();
+
+        ProductEntity productEntityEspe = ProductEntity.builder().id("12345").tittle("Camisa RB").category("Roupas")
                 .description("Para a season 2024").price(new BigDecimal(250.00)).build();
-        String id = "1234";
+
+        String id = "12345";
+
+        ProductEntity entity = ProductEntity.builder().id("12345").tittle("Camisa RB").category("Roupas")
+                .description("Para a season 2024").price(new BigDecimal(250.00)).build();
+
+        ProductEntity productEntity = converter.toEntityUpdate(entity,productDTO, id);
+
+        assertEquals(productEntityEspe.getTittle(), productEntity.getTittle());
+        assertEquals(productEntityEspe.getCategory(), productEntity.getCategory());
+        assertEquals(productEntityEspe.getDescription(), productEntity.getDescription());
+        assertEquals(productEntityEspe.getImage(), productEntity.getImage());
+        assertEquals(productEntityEspe.getPrice(), productEntity.getPrice());
+        assertEquals(productEntityEspe.getId(), productEntity.getId());
+
+        assertNotNull(productEntity.getData_update());
     }
 
+    @Test
+    void hustConverterToList(){
+
+    }
 }
+

@@ -4,6 +4,7 @@ import com.api.extern.api.dto.ProductDTO;
 import com.api.extern.business.converter.ProdutoConverter;
 import com.api.extern.message.producer.FakeApiProducer;
 import com.api.extern.service.entity.ProductEntity;
+import com.api.extern.service.error.NotificationError;
 import com.api.extern.service.exception.BusinessException;
 import com.api.extern.service.exception.ConflictException;
 import com.api.extern.service.exception.UnprocessableEntityException;
@@ -18,6 +19,7 @@ import static java.lang.String.format;
 
 @Service
 @RequiredArgsConstructor
+@NotificationError
 public class ProductService {
 
     private final ProductRepository repository;

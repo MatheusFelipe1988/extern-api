@@ -3,6 +3,7 @@ package com.api.extern.business.configuration;
 import com.api.extern.api.dto.ProductDTO;
 import com.api.extern.business.converter.ProdutoConverter;
 import com.api.extern.service.client.FakeApiClient;
+import com.api.extern.service.error.NotificationError;
 import com.api.extern.service.exception.BusinessException;
 import com.api.extern.service.exception.ConflictException;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class FakeApiService {
     private final ProdutoConverter produtoConverter;
     private final ProductService productService;
 
+    @NotificationError
     public List<ProductDTO> getProducts(){
         try {
             List<ProductDTO> dto = fakeApiClient.getListProducts();

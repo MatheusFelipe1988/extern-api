@@ -5,7 +5,6 @@ import com.api.extern.business.converter.ProdutoConverter;
 import com.api.extern.service.client.FakeApiClient;
 import com.api.extern.service.exception.BusinessException;
 import com.api.extern.service.exception.ConflictException;
-import com.api.extern.service.exception.UnprocessableEntityException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

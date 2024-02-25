@@ -13,11 +13,11 @@ import org.springframework.stereotype.Component;
 public class NotificationErrorAspect {
     private final FakeMailService mailService;
 
-    @Pointcut("@within(com.api.extern.service.error.NotificationError) || @annotation(package com.api.extern.service.error.NotificationError)")
-    public void NotificationErroPointcut(){}
+    @Pointcut("@within(com.api.extern.service.error.NotificationError) || @annotation(com.api.extern.service.error.NotificationError)")
+    public void NotificationErroPointcut() {}
 
     @AfterThrowing(pointcut = "NotificationErroPointcut()", throwing = "e")
-    public void notiErro(final Exception e){
+    public void notificationError(final Exception e){
         mailService.postMailException(e);
     }
 }

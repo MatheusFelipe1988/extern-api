@@ -29,12 +29,5 @@ public class RabbitMQConConfig {
         return BindingBuilder.bind(queue()).to(directExchange).with(ROUTING_KEY_NAME);
     }
 
-    @Bean
-    public MessageConverter jsonMessageConverter(){
-        final ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        return new Jackson2JsonMessageConverter(mapper);
-    }
-
 
 }

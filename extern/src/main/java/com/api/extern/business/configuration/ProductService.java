@@ -33,14 +33,17 @@ public class ProductService {
     }
 
     public ProductEntity salvarProdutos(ProductEntity entity){
+
         try {
             return repository.save(entity);
         }catch (Exception e){
             throw new BusinessException("error save to products");
         }
+
     }
 
     public ProductDTO salvarProdutoDTO(ProductDTO productDTO){
+
         try {
             Boolean retorno = existPorTitulo(productDTO.getTittle());
             if (retorno.equals(true)){
@@ -53,17 +56,21 @@ public class ProductService {
         }catch (Exception e){
             throw new BusinessException("Error save to products" + e);
         }
+
     }
 
     public List<ProductDTO> getAllProducts(){
+
         try {
             return converter.toListDto(repository.findAll());
         }catch (Exception e){
             throw new BusinessException("error get products", e);
         }
+
     }
 
     public ProductDTO getProductByTittle(String tittle){
+
         try {
             ProductEntity product = repository.findByTittle(tittle);
             if (Objects.isNull(product)) {
@@ -75,9 +82,11 @@ public class ProductService {
         }catch (Exception e){
             throw new BusinessException(format("error get product with name = %s", tittle) + e);
         }
+
     }
 
     public void deleteProduct(String tittle){
+
         try {
             Boolean retorno = existPorTitulo(tittle);
             if (retorno.equals(false)){
@@ -90,17 +99,21 @@ public class ProductService {
         }catch (Exception e){
             throw new BusinessException(format("error delete product %s", tittle) + e);
         }
+
     }
 
     public Boolean existPorTitulo(String tittle){
+
         try {
             return repository.existsByTittle(tittle);
         }catch (Exception e){
             throw new BusinessException(format("error get products with tittle %s", tittle) + e);
         }
+
     }
 
     public ProductDTO updateProduct(String id, ProductDTO productDTO){
+
         try {
             ProductEntity entity = repository.findById(id).orElseThrow(() ->
                     new UnprocessableEntityException("error product not found in the database"));
@@ -111,5 +124,6 @@ public class ProductService {
         }catch (Exception e){
             throw new BusinessException("error update products", e);
         }
+
     }
 }

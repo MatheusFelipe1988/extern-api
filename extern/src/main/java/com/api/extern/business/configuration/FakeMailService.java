@@ -25,6 +25,7 @@ public class FakeMailService {
     private String mailTo;
 
     public void postMailException(Exception e){
+
         try {
             final MimeMessage message = javaMailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, true,
@@ -41,6 +42,7 @@ public class FakeMailService {
         }catch (MessagingException exception){
             exception.printStackTrace();
         }
+
     }
 
 }

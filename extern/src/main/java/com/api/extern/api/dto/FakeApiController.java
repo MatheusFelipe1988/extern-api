@@ -23,8 +23,8 @@ public class FakeApiController {
 
     @Operation(summary = "buscando todos os da api e salvar", method = "POST")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "quando a listagem for OK"),
-            @ApiResponse(responseCode = "500", description = "quando der erro na listagem")
+            @ApiResponse(responseCode = "200", description = "quando a listagem dos produtos for OK"),
+            @ApiResponse(responseCode = "500", description = "quando der erro na hora de listar produtos")
     })
     @PostMapping("/api")
     public ResponseEntity<List<ProductDTO>> buscaProduto(){
@@ -33,8 +33,8 @@ public class FakeApiController {
 
     @Operation(summary = "salvar todos os produtos", method = "POST")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "quando o cadastro for OK"),
-            @ApiResponse(responseCode = "500", description = "quando der erro no cadastro")
+            @ApiResponse(responseCode = "200", description = "na hora de realizar o cadastro for OK"),
+            @ApiResponse(responseCode = "500", description = "quando der erro na hora de cadastrar")
     })
     @PostMapping("/")
     public ResponseEntity<ProductDTO> salvaProduto(@RequestBody ProductDTO productDTO){
@@ -54,8 +54,8 @@ public class FakeApiController {
 
     @Operation(summary = "Deletando produtos", method = "DELETE")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "delete de produtos for OK"),
-            @ApiResponse(responseCode = "500", description = "quando der erro no delete")
+            @ApiResponse(responseCode = "200", description = "apagando o dado de um produto for OK"),
+            @ApiResponse(responseCode = "500", description = "quando der erro na hora de apagar")
     })
     @DeleteMapping("/")
     public ResponseEntity<Void> deleteProduto(@RequestParam ("tittle") String tittle){
@@ -65,8 +65,8 @@ public class FakeApiController {
 
     @Operation(summary = "Buscando produtos", method = "GET")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "busca de produtos for OK"),
-            @ApiResponse(responseCode = "500", description = "quando der erro na busca")
+            @ApiResponse(responseCode = "200", description = "busca de todos os produtos for OK"),
+            @ApiResponse(responseCode = "500", description = "quando der erro na busca de todos os produtos")
     })
     @GetMapping("/")
     public ResponseEntity<List<ProductDTO>> getProducts(){
@@ -75,7 +75,7 @@ public class FakeApiController {
 
     @Operation(summary = "Buscando produtos pelo nome", method = "GET")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "busca do nome for OK"),
+            @ApiResponse(responseCode = "200", description = "busca do nome caso for OK"),
             @ApiResponse(responseCode = "500", description = "quando der erro na busca")
     })
     @GetMapping("/{tittle}")

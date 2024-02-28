@@ -21,6 +21,7 @@ public class FakeApiService {
 
     @NotificationError
     public List<ProductDTO> getProducts(){
+
         try {
             List<ProductDTO> dto = fakeApiClient.getListProducts();
             dto.forEach(produto -> {
@@ -33,10 +34,11 @@ public class FakeApiService {
             }
             );
             return productService.getAllProducts();
-        }catch (ConflictException e){
+        } catch (ConflictException e){
             throw new ConflictException(e.getMessage());
         }catch (Exception e){
             throw new BusinessException("Erro ao buscar nomes no banco de dados");
         }
+
     }
 }

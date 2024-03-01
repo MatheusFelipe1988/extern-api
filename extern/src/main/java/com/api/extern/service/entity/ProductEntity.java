@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "product")
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

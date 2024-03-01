@@ -26,11 +26,6 @@ public class ProductService {
 
     private final ProdutoConverter converter;
 
-    private final FakeApiProducer producer;
-
-    public void sendMessage(ProductEntity productEntity){
-        producer.sendMessage(productEntity);
-    }
 
     public ProductEntity salvarProdutos(ProductEntity entity){
 

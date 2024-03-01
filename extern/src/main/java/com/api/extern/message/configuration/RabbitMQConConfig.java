@@ -1,11 +1,7 @@
 package com.api.extern.message.configuration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,7 +13,7 @@ public class RabbitMQConConfig {
     private final DirectExchange directExchange;
 
     public static final String ROUTING_KEY_NAME = "broker.queue.fake-api.producer";
-    private static final String QUEUE_NAME = "broker.queue.fake-api";
+    private static final String QUEUE_NAME = "broker.queue.api";
 
     @Bean
     Queue queue(){

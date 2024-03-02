@@ -13,7 +13,7 @@ public class RabbitMQConConfig {
     private final DirectExchange directExchange;
 
     public static final String ROUTING_KEY_NAME = "broker.queue.fake-api.producer";
-    private static final String QUEUE_NAME = "broker.queue.api";
+    private static final String QUEUE_NAME = "broker.queue.fale-api.consumer";
 
     @Bean
     Queue queue(){

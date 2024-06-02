@@ -14,10 +14,10 @@ Implementado um sistema de email que faz o envio de emails usando a programaçã
 &nbsp;
 
 ## Stacks
-- Java
-- Springboot
-- MySQL
-- Swagger
+- Java 17
+- Springboot 3.1.2
+- MySQL 8.0
+- Swagger 2.0.6
 - RabbitMQ
 - Junit
 - Mockito
